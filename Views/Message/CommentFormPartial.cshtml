@@ -1,0 +1,8 @@
+@model Comments
+<form asp-action="CommentProcess" asp-controller="Message" method="post">
+    <span asp-validation-for="comment"></span><br>
+    <textarea asp-for="comment" rows="3" cols="50"></textarea><br>
+    <input type = "hidden" asp-for="userId" value = "@ViewBag.User.userId">
+    <input type = "hidden" asp-for="messageId" value = "@this.ViewData["messageId"]">
+    <button>Post a Comment</button>
+</form>

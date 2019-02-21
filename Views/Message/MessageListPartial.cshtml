@@ -1,0 +1,32 @@
+
+@{
+    foreach(var mess in @ViewBag.allMessage)
+    {
+        <p>---------------------------------------------------------------------------------------</p>
+        <h4>@mess.User.FirstName @mess.User.LastName</h4>
+        <h5>@mess.User.CreatedAt</h5>
+        <p>@mess.message</p>
+
+        
+        foreach(var com in @mess.Comments)
+        {
+            <p>---------------------------------------------------------------------------------------</p>
+            <p>@com.User.FirstName @com.User.LastName</p>
+            <p>@com.comment</p>
+            <p>@com.CreatedAt</p>
+            
+        }
+        <p>---------------------------------------------------------------------------------------</p>
+
+        @Html.Partial(
+                    "CommentFormPartial.cshtml",
+                    new ViewDataDictionary(this.Vi‌​ewData) {
+                        {
+                        "messageid", @mess.messageId 
+                        } 
+                    }
+                    );
+
+    }
+
+}
